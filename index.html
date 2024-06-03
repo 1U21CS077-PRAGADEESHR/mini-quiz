@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini quiz</title>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+        <h1>Interactive Quiz</h1>
+        <p>1. What is the capital of France?</p>
+        <input type="radio" name="capital" value="Paris"><label>Paris</label>
+        <input type="radio" name="capital" value="London"><label>London</label>
+        <input type="radio" name="capital" value="Berlin"><label>Berlin</label>
+        <p>2. Which is known as the Red Planet?</p>
+        <input type="radio" name="planet" value="Mars"><label>Mars</label>
+        <input type="radio" name="planet" value="Venus"><label>Venus</label>
+        <input type="radio" name="planet" value="Jupiter"><label>Jupiter</label>
+        <p>3. What is the largest mammal on Earth?</p>
+        <input type="radio" name="mammal" value="Elephant"><label>Elephant</label>
+        <input type="radio" name="mammal" value="Blue Whale"><label>Blue Whale</label>
+        <input type="radio" name="mammal" value="Giraffe"><label>Giraffe</label><br>
+        <button id="btn" style="background-color: green; color: white; margin-top: 4%; padding: 8px 10px;cursor: pointer;; border: none;">Submit</button>
+    </div>
+    <div id="result" class="hidden" style="text-align: center;">
+        <h1>Interactive Quiz</h1>
+        <h2>Your Quiz Result</h2>
+        <h3 id="output"></h3>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var container = document.querySelector(".container");
+        var result = document.getElementById("result");
+        var output = document.getElementById("output");
+
+
+        result.style.display="none"
+
+        btn.addEventListener("click", function() {
+            var score = 0;
+
+            var capital = document.getElementsByName("capital");
+            var planet = document.getElementsByName("planet");
+            var mammal = document.getElementsByName("mammal");
+
+            for (var i = 0; i < capital.length; i++) {
+                if (capital[i].checked && capital[i].value == "Paris") score++;
+                if (planet[i].checked && planet[i].value == "Mars") score++;
+                if (mammal[i].checked && mammal[i].value == "Blue Whale") score++;
+            }
+
+            container.style.display = "none";
+            result.style.display = "block";
+            output.textContent = "Score: " + score;
+        });
+    </script>
+</body>
+</html>
